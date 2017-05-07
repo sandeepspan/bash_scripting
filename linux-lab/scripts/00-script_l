@@ -1,0 +1,18 @@
+##
+# This file is the script logic to be used for generating grades for respective question
+##
+#!/bin/bash
+
+. /tmp/exconfig
+. /tmp/01-variables
+
+response=$(ping -4  "${ip}" |grep "Packets: Sent ")
+sent_response=$(echo $response|tr ',' ' '|awk '{print $4}')
+received_response=$(echo $response|tr ',' ' '|awk '{print $7}')
+ 
+if [ ${sent_response} -eq ${received_response} ] && ( [ ! -z ${sent_response} ] || [ ! -z ${received_response} ])
+then
+ echo "|| SUCCESS  || IP address ${ip} found reachable."
+else
+ echo "||  FAILED  || IP address ${ip} is not reachable." 
+fi

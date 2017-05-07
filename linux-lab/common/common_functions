@@ -1,0 +1,112 @@
+
+function rputfile ()
+{
+ spath=${1}
+ userserver=${2}
+ dpath=${3}
+ scp ${spath} ${userserver}:${dpath} >> /dev/null 2>&1
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... File Copy Failed i.e. " 
+  echo "scp ${spath} ${userserver}:${dpath}" 
+ fi 
+}
+
+function lputfile ()
+{
+ spath=${1}
+ dpath=${2}
+ cp ${spath} ${dpath} >> /dev/null 2>&1
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... File Copy Failed i.e. " 
+  echo "cp ${spath} ${dpath}" 
+ fi 
+}
+
+function rcmd ()
+{
+ userserver=${1}
+ cmd=${2}
+ ssh ${userserver} "${cmd}"
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... Command Execution Failed i.e. " 
+  echo "ssh ${userserver} ${cmd}" 
+  fi 
+}
+
+function lcmd ()
+{
+ cmd=${1}
+ ${cmd} 
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... Command Execution Failed i.e. " 
+  echo "${cmd}" 
+ fi
+}
+
+function rgetfile ()
+{
+ spath=${1}
+ userserver=${2}
+ dpath=${3}
+ scp ${userserver}:${spath} ${dpath} >> /dev/null 2>&1
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... File Copy Failed i.e. " 
+  echo "scp ${userserver}:${spath} ${dpath}" 
+ fi 
+}
+
+function lgetfile ()
+{
+ spath=${1}
+ dpath=${2}
+ mv ${spath} ${dpath} >> /dev/null 2>&1
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... File Copy Failed i.e. " 
+  echo "cp ${spath} ${dpath}" 
+ fi 
+}
+
+function rrmfile ()
+{
+ userserver=${1}
+ dpath=${2}
+ ssh ${userserver} "rm -vf ${dpath}" >> /dev/null 2>&1
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... File Copy Failed i.e. " 
+  echo "ssh ${userserver} rm -f ${dpath}" 
+ fi 
+}
+
+function lrmfile ()
+{
+ dpath=${1}
+ rm -vf ${dpath} >> /dev/null 2>&1
+ if [ $(echo $?) -eq 0 ]
+ then
+  :
+ else
+  echo -n "||  FAILED  || $(date)... File Copy Failed i.e. " 
+  echo "rm -f ${dpath}"
+ fi 
+}

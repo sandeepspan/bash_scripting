@@ -1,0 +1,23 @@
+##
+# This file is the script logic to be used for generating grades for respective question
+##
+#!/bin/bash
+
+. /tmp/exconfig
+. /tmp/01-variables
+
+
+if [ $( grep "^${SECONFVALUE}" /etc/selinux/config |wc -l ) -eq 1 ]
+then
+ echo "|| SUCCESS  || Selinux configuration file is found as expected for State"
+else
+ echo "||  FAILED  || Selinux configuration file is wrongly configured, $( grep "^SELINUX=" /etc/selinux/config ) found in configuration file /etc/selinux/config"
+fi
+# To check Selinux Policy
+
+if [ $( grep "^${SEPOLVALUE}" /etc/selinux/config | wc -l ) -eq 1 ]
+then 
+ echo "|| SUCCESS  || Selinux configuration file is found as expected for Policy"
+else
+ echo "||  FAILED  || Selinux configuration file is wrongly configured, $( grep "^SELINUXTYPE=" /etc/selinux/config ) found in configuration file /etc/selinux/config"
+fi
