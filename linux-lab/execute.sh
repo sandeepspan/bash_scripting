@@ -59,54 +59,63 @@ function evaluate_local ()
  done 
 }
 
-
-for filename in $( ls ${questionsdir} )
-do
- clientip=${1}
- serverip=${2}
- . ${questionsdir}/${filename}
- echo ""
- echo "|| QUESTION || ${question}"
- ptr="$(echo ${filename}|awk -F '-' '{print $1}')"
- curconfig="$(cd ${configsdir} ; ls  ${ptr}* ; cd ..)"
- . ${configsdir}/${curconfig}
- if [ "${TARGET}" ==  "CLIENT" ] 
- then
-  ips="${clientip}"
-  curlocalscript="$(cd ${scriptsdir} ; ls  ${ptr}*_lc ; cd ..)"
-  curremotescript="$(cd ${scriptsdir} ; ls  ${ptr}*_rc ; cd ..)"
- elif [ "${TARGET}" ==  "SERVER" ] 
- then 
-  ips="${serverip}"
-  curlocalscript="$(cd ${scriptsdir} ; ls  ${ptr}*_ls ; cd ..)"
-  curremotescript="$(cd ${scriptsdir} ; ls  ${ptr}*_rs ; cd ..)"
- elif [ "${TARGET}" ==  "CLIENT+SERVER" ] 
- then
-  ips="$( echo ${clientip}' '${serverip} )"
-  curlocalscript="$(cd ${scriptsdir} ; ls  ${ptr}*_l ; cd ..)"
-  curremotescript="$(cd ${scriptsdir} ; ls  ${ptr}*_r ; cd ..)"
- fi
- for currentip in $( echo ${ips} )
+function evaluate ()
+{
+ for filename in $( ls ${questionsdir} |sort -n |grep -v template)
  do
-  echo "sdir=${scriptsdir}" >> ${runtimecfg}
-  echo "tdir=${tempdir}" >> ${runtimecfg}
-  echo "ip=${currentip}" >> ${runtimecfg}
-  echo "name=HOST" >> ${runtimecfg}
-  echo "cfile=${configsdir}/${curconfig}" >> ${runtimecfg}
-  if [ "${LOCALCHECK}" == "true" ]
-  then
-   echo "scripts=${curlocalscript}" >> ${runtimecfg}
-   evaluate_local "${runtimecfg}"
-  fi
-  if [ "${REMOTECHECK}" == "true" ]
-  then
-   echo "scripts=${curremotescript}" >> ${runtimecfg}
-   evaluate_remote "${runtimecfg}"
-  fi
+  [ $(echo ${filename}|grep template |wc -l) -ne 0 ] && break;
+  clientip=${1}
+  serverip=${2}
+  . ${questionsdir}/${filename}
+  echo ""
+  echo ""
+  echo "|| QUESTION || ${question}"
+  echo "-------------------------------------------------------"
+  ptr="$(echo ${filename}|awk -F '-' '{print $1}')"
+  curconfig="$(cd ${configsdir} ; ls  ${ptr}* 2> /dev/null; cd ..)"
+  if [ ! -z ${curconfig} ]
+  then 
+   . ${configsdir}/${curconfig}
+   if [ "${TARGET}" ==  "CLIENT" ] 
+   then
+    ips="${clientip}"
+    curlocalscript="$(cd ${scriptsdir} ; ls  ${ptr}*_lc 2> /dev/null; cd ..)"
+    curremotescript="$(cd ${scriptsdir} ; ls  ${ptr}*_rc 2> /dev/null; cd ..)"
+   elif [ "${TARGET}" ==  "SERVER" ] 
+   then 
+    ips="${serverip}"
+    curlocalscript="$(cd ${scriptsdir} ; ls  ${ptr}*_ls 2> /dev/null; cd ..)"
+    curremotescript="$(cd ${scriptsdir} ; ls  ${ptr}*_rs 2> /dev/null; cd ..)"
+   elif [ "${TARGET}" ==  "CLIENT+SERVER" ] 
+   then
+    ips="$( echo ${clientip}' '${serverip} )"
+    curlocalscript="$(cd ${scriptsdir} ; ls  ${ptr}*_l 2> /dev/null; cd ..)"
+    curremotescript="$(cd ${scriptsdir} ; ls  ${ptr}*_r 2> /dev/null; cd ..)"
+   fi
+   for currentip in $( echo ${ips} )
+   do
+    echo "sdir=${scriptsdir}" >> ${runtimecfg}
+    echo "tdir=${tempdir}" >> ${runtimecfg}
+    echo "ip=${currentip}" >> ${runtimecfg}
+    echo "name=HOST" >> ${runtimecfg}
+    echo "cfile=${configsdir}/${curconfig}" >> ${runtimecfg}
+    if [ "${LOCALCHECK}" == "true" ]
+    then
+     echo "scripts=${curlocalscript}" >> ${runtimecfg}
+     evaluate_local "${runtimecfg}"
+    fi
+    if [ "${REMOTECHECK}" == "true" ]
+    then
+     echo "scripts=${curremotescript}" >> ${runtimecfg}
+     evaluate_remote "${runtimecfg}"
+    fi
+   done
+   rm -f /tmp/exconfig
+  else
+   echo "||   INFO   || Config File not defined for this question, Check is skipped."
+  fi 
  done
- rm -f /tmp/exconfig
-done
-
+}
 
 function main ()
 {
@@ -126,8 +135,7 @@ function main ()
    echo -n "Enter Client IP address : "
    read client
    echo "You entered ${client}"
-   evaluate ${server} "SERVER"
-   evaluate ${client} "CLIENT"
+   evaluate ${client} ${server} 
   ;;
   *) 
    echo "$(date).... Invlid Input." 
@@ -136,7 +144,6 @@ function main ()
 }
 
 #main "$@" 
-#evaluate "${1}" "SERVER"
-
-
+clear
+evaluate "$@"
 
