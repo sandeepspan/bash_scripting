@@ -1,4 +1,4 @@
 ###
 # This file contains descrition of question to be asked to student
 ###
-question="Systems should always use SElinux in encforcing mode"
+question="Systems should always work in multiuser mode"

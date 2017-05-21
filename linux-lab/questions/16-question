@@ -1,0 +1,10 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Extend your web server to include a virtual host for the site http://www1.vlab.in then perform the following steps:
+               a. Set the DocumentRoot to /var/www/virtual
+	       b. Download http://classroom.vlab.in/pub/www.html
+	       c. Rename the downloaded file to index.html
+	       d. Copy this index.html to the DocumentRoot of the virtual host
+	       e. Do NOT make any modifications to the content of index.html
+ 	       f. Ensure that harry is able to create content in /var/www/virtual "

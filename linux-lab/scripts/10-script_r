@@ -1,0 +1,50 @@
+##
+# This file is the script logic to be used for generating grades for respective question
+##
+#!/bin/bash
+
+. /tmp/exconfig
+. /tmp/10-variables
+
+zone=$(firewall-cmd --get-default-zone)
+
+# To check service is enabled for startup
+for service in $( echo ${FIREWALL_SERVICES} )
+do
+ if [ "$( systemctl is-enabled ${service} )" == "enabled" ]
+ then
+  echo "|| SUCCESS  || ${service} is enabled at OS startup"
+ else
+  echo "||  FAILED  || ${service} is not enabled at OS startup"
+ fi
+done
+
+# To check service is started 
+for service in $( echo ${FIREWALL_SERVICES} )
+do
+ if [ "$( systemctl is-active ${service} )" == "active" ]
+ then
+  echo "|| SUCCESS  || ${service} is found running"
+ else
+  echo "||  FAILED  || ${service} is found not running"
+ fi
+done
+
+# To check Service is allowed in Firewall 
+for protocol in $( echo ${FIREWALL_PROTOCOL} )
+do
+ if [ $(cat /etc/firewalld/zones/${zone}.xml |grep "service name=" | grep "${protocol}" |wc -l) -eq 1 ]
+ then
+  echo "|| SUCCESS  || ${protocol} service is properly allowed in firewall configuration"
+ else
+  echo "||  FAILED  || ${protocol} service is not allowed in firewall configuration as requested."
+ fi
+done
+
+# To check SSHD denial configuration
+if [ $( grep "^SSHD_DENY" /etc/host.deny |wc -l ) -eq 1 ]
+then
+ echo "|| SUCCESS  || SSHD access denial configuration is found as expected "
+else
+ echo "||  FAILED  || SSHD access denial configuration is not as expected i.e. ' ${SSHD_DENY} ' in /etc/host.deny"
+fi

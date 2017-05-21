@@ -1,0 +1,13 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure your web server to display the dynamic web contents
+               a. Dynamic content is provided by a virtual host named as http://dynamic.vlab.in
+               b. This host should listen on port no 8877
+	       c. Download a copy of script from http://classroom.vlab.in/pub/webapp.wsgi and place it on appropriate location for virtual host so that it generates dynamic web content
+	       d. Do not make any changes in webapp.wsgi 
+	       e. Clients connecting to https://dynamic.vlab.in:8877 should get the output of dynamic web content
+	       f. This virtual host must be accessible to all the systems in vlab.in.
+	       g. A signed certificate for web server is available at http://classroom.vlab.in/pub/tls/certs/serverX.crt
+	       h. Required key for this certificate file is available at http://classroom.vlab.in/pub/tls/private/serverX.key
+	       i. The certificate for signing authority is provided at http://classroom.vlab.in/pub/example-ca.crt"

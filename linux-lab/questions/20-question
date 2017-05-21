@@ -1,0 +1,8 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question=" Make and place following Script on system1 (client)
+               a. Create a script myusers.sh for creating users from userlist file.
+	       b. file downloaded from http://classroom.vlab.in/pub/userlist path.
+	       c.  when userlist as first argument provided it will be created all the users as per users name specify in userlist file and all users should be appear /bin/false login shell. If other argument provided it will display 'Invalid file name' output.
+	       d. if not providing any argument it will display 'Invalid Argument'"

@@ -1,0 +1,9 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure NFS on system2 (server) as follow,
+               a.  export /public directory with read only access to network0.vlab.in domain.
+               b. export /protected directory with read write access to network0.vlab.in domain
+               c. Acess to /protected  is authenticate by using Kerbarose. You can use keytab  file from http://classroom.vlab.in/pub/keytabs/serverX.keytab 
+               d. Create a  secure directory  inside the /protected directory  
+               e. User smith have read and write acess on secure directory"

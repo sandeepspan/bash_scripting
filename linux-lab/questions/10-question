@@ -1,0 +1,6 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure SSH access on your both systems as follows,
+               a. Users should have SSH access on your systems from remotely.
+	       b. Clients within my133t.org should not have SSH access on your systems."

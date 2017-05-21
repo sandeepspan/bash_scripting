@@ -1,0 +1,9 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question=" Make and place following Script on system2 (server)
+	       a. Create a script /root/script.sh with executable by all such a manner
+	       b. with input 'print' output should be 'python'
+	       c. with input 'python' output should be 'print'
+	       d. with input any value output should be 'python|print'
+	       e. with no input, output should be 'Invalid Argument'   "

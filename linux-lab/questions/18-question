@@ -1,0 +1,7 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure system1(client) for iscsi intiator.
+               a. Iscsi device should be automatically mounted at booting time.
+               b. Iscsi should contain a block of 200MB and should have xfs file system on it.
+               c. The partion must be mounted on /mnt/iscsi and it should be automatically mounted."

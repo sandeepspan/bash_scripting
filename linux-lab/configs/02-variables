@@ -1,0 +1,8 @@
+##
+# This file contains variables to be used by script to evaluate respective Question
+##
+TARGET="CLIENT+SERVER"   	  # Possible Values are "CLIENT" or "CLIENT+SERVER" or "SERVER"
+LOCALCHECK="false"        	  # Possible Values are "true" if any check to be performed from local server else "false" 
+REMOTECHECK="true"                # Possible Values are "true" if any check to be performed on remote server else "false"
+##
+DEFAUTL_BOOT="multi-user.target"

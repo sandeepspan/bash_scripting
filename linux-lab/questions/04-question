@@ -1,0 +1,7 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure local mail service as below,
+               a. The system1 do not accept incoming email from external sources.
+	       b. Any mail send locally on system1 (server) is automatically routed from server.network0.vlab.in(smtpx.vlab.in)
+	       c. You may test your configuration by sending email to the local user 'ali'.The system2 (client) has been configured to drop mail for this user info http://system2.network0.vlab.in/receivedmail/1(http://desktop0.vlab.in/receivedmail/1)"

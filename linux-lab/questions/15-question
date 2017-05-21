@@ -1,0 +1,8 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Implement a web server for the site http://server1.vlab.in, Then perform the following steps:
+               a. Download http://classroom.vlab.in/pub/server.html
+	       b. Rename the downloaded file to index.html
+	       c. Copy this index.html to the DocumentRoot of your web server
+	       d. Do NOT make any modifications to the content of index.html" 

@@ -1,0 +1,7 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure samba share on your system2(server) as below,
+               a. The samba share must be permanently mounted on system2 machine on /mnt/multiuser directory with multiuser mount option.
+               b. The smb share is mounted with credentials file by using username natasha.
+               c. This share must allow anyone who can authenticate as sarah."

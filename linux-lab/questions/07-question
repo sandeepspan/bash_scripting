@@ -1,0 +1,7 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure NFS client on system1 (client) as follow,
+               a. /public share should be mount on /mnt/nfs directory with only read permission
+	       b. /protected directory should be mount on /mnt/nfssecure with krb5p authentication and write permission to client.
+               c. You can use keytab file from http://classroom.vlab.in/pub/keytabs/desktopx.keytab "

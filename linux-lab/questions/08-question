@@ -1,0 +1,9 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Share /common directory via smb from your system2 (server),
+               a. Share name must be smbshare.workgroup should be TEAM.
+               b. Samba share must browseable.
+               c.  Members of the marketing group have a read and write permissions on the smbshare.
+               d.  User martin should have read access on it and authenticate with the password 'postroll'
+               e.  natasha should have read and write access on share and she is also member of marketing team,authenticate with the  'postroll' "

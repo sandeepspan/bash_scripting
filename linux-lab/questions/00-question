@@ -1,4 +1,4 @@
 ###
 # This file contains descrition of question to be asked to student
 ###
-question="System should be reachable over network and for SSH connection"
+question="Systems should be reachable over network and for SSH connection"

@@ -1,0 +1,7 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure Mariadb database as below,
+               a. create a 'contacts' database and accept connections only from local clients.
+	       b. root password should be 'postroll'
+	       c. For creating complete backup download backup file from http://classroom.vlab.in/pub/mydb.dump.Also create user john for accept connection from localhost with  all privileges and another user steve for accept connection from any host for insert,update,delete and select privileges."

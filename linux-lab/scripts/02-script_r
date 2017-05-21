@@ -1,0 +1,15 @@
+##
+# This file is the script logic to be used for generating grades for respective question
+##
+#!/bin/bash
+
+. /tmp/exconfig
+. /tmp/02-variables
+
+
+if [ "$( systemctl get-default )" == "${DEFAUTL_BOOT}" ]
+then
+ echo "|| SUCCESS  || System is found in correct boot mode"
+else
+ echo "||  FAILED  || System is not configured as expected for boot mode "
+fi

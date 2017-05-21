@@ -1,0 +1,6 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure the following IPV6 ip address for interface eth0 on your both systems.
+               a. IPV6 address for system1 (client) - 'fddb:fe2a:ab1e::c0a8:1/64'
+	       b. IPV6 address for system2 (server) - 'fddb:fe2a:ab1e::c0a8:fe/64' "

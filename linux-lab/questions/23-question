@@ -1,0 +1,4 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Use previously restored database and fire query for user mobius. Insert query such that searching all details like  username,password,email id  for user 'mobius', Save Your query to /usr/mariadb.sql and output of query to /usr/mariadb.sql.out"

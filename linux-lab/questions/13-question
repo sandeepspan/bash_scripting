@@ -1,0 +1,9 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure a link aggregation on both systems
+               a. Both systems has a network interfaces 'enp0s9' and 'enp0s10'
+	       b. These two interface should be Slaved for new teaming device called 'team1'. 
+	       c. Device 'team1' should remain active even if one of the interfaces goes down.
+	       d. Assign the given IP address for 'team1' on system1 (client) - 192.168.99.201
+	       e. Assign the given IP address for 'team1' on system2 (server) - 192.168.99.202"

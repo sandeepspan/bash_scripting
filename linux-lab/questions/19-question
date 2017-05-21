@@ -1,0 +1,8 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Create a directory named as secret in default DocumentRoot of your default web server,
+               a. Download a file - http://classroom.vlab.in/pub/private.html to secret directory
+               b. Rename this file as index.html
+               c. The secret directory should be only available to localhost.
+"

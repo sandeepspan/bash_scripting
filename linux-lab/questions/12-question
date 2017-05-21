@@ -1,0 +1,4 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure port forwarding on your system2(server). The traffic coming from system2 on port 5423/tcp should be forwarded to port 80/tcp on your system2(server)."

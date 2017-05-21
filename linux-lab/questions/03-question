@@ -1,0 +1,8 @@
+###
+# This file contains descrition of question to be asked to student
+###
+question="Configure iscsi target on system2 (server) machine.
+               a. iscsi disk name is iqn.2014-06.com.example:serverX.Iscsi
+               b. iscsi should use default port as 3260.
+               c. target should use 3G backing volume naming as iscsi_vol.
+               d. target should available to only system2 machine."
