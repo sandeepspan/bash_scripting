@@ -1,9 +1,0 @@
-##
-# This file is the script logic to be used for generating grades for respective question
-##
-#!/bin/bash
-
-. /tmp/exconfig
-. /tmp/01-variables
-
-echo "||   INFO   || Nothing to check." 
